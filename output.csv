@@ -1,0 +1,32 @@
+```csv,,,,
+Investigation,Result,Reference Value,Unit,Classification
+"""Hemoglobin (Hb)""",12.5,"""13.0 - 17.0""","""g/dL""",Low
+"""Total RBC count""",5.2,"""4.5 - 5.5""","""mill/cumm""",Normal
+"""Packed Cell Volume (PCV)""",57.5,"""40 - 50""","""%""",High
+"""Mean Corpuscular Volume (MCV)""",87.75,"""83 - 101""","""fL""",Normal
+"""MCH""",27.2,"""27 - 32""","""pg""",Normal
+"""MCHC""",32.8,"""32.5 - 34.5""","""g/dL""",Normal
+"""RDW""",13.6,"""11.6 - 14.0""","""%""",Normal
+"""Total WBC count""",9000,"""4000-11000""","""cumm""",Normal
+"""Neutrophils""",60,"""50 - 62""","""%""",Normal
+"""Lymphocytes""",31,"""20 - 40""","""%""",Normal
+"""Eosinophils""",1,"""00 - 06""","""%""",Normal
+"""Monocytes""",7,"""00 - 10""","""%""",Normal
+"""Basophils""",1,"""00 - 02""","""%""",Normal
+"""Platelet Count""",150000,"""150000 - 410000""","""cumm""",Normal
+```,,,,
+Explanation of Classification Logic and Application:,,,,
+1.  **Hemoglobin (Hb):**  Normal range is 13.0 - 17.0. Result is 12.5. This is lower than the normal range. Therefore, classification = Low.,,,
+2.  **Total RBC count:** Normal range is 4.5 - 5.5. Result is 5.2.  This falls within the normal range.  Therefore, classification = Normal.,,,
+3.  **Packed Cell Volume (PCV):** Normal range is 40 - 50. Result is 57.5. This is higher than the normal range. Therefore, classification = High.,,,
+4.  **Mean Corpuscular Volume (MCV):** Normal range is 83 - 101. Result is 87.75. This falls within the normal range.  Therefore, classification = Normal.,,,
+5.  **MCH:** Normal range is 27 - 32. Result is 27.2. This falls within the normal range. Therefore, classification = Normal.,,,
+6.  **MCHC:** Normal range is 32.5 - 34.5. Result is 32.8. This falls within the normal range. Therefore, classification = Normal.,,,
+7.  **RDW:** Normal range is 11.6 - 14.0. Result is 13.6. This falls within the normal range. Therefore, classification = Normal.,,,
+8.  **Total WBC count:** Normal range is 4000 - 11000. Result is 9000. This falls within the normal range. Therefore, classification = Normal.,,,
+9.  **Neutrophils:** Normal range is 50 - 62. Result is 60. This falls within the normal range. Therefore, classification = Normal.,,,
+10. **Lymphocytes:** Normal range is 20 - 40. Result is 31. This falls within the normal range. Therefore, classification = Normal.,,,
+11. **Eosinophils:** Normal range is 00 - 06. Result is 1. This falls within the normal range. Therefore, classification = Normal.,,,
+12. **Monocytes:** Normal range is 00 - 10. Result is 7. This falls within the normal range. Therefore, classification = Normal.,,,
+13. **Basophils:** Normal range is 00 - 02. Result is 1. This falls within the normal range. Therefore, classification = Normal.,,,
+14. **Platelet Count:** Normal range is 150000 - 410000. Result is 150000. This falls within the normal range. Therefore, classification = Normal.,,,
