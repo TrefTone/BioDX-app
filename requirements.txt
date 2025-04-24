@@ -48,6 +48,12 @@ tensorflow==2.19.0
 tensorboard==2.19.0
 tokenizers==0.21.1
 toml==0.10.2
+torch==1.12.1
+torch-geometric==2.1.0
+-f https://data.pyg.org/whl/torch-1.12.1+cpu.html
+torch-scatter==2.0.9
+-f https://data.pyg.org/whl/torch-1.12.1+cpu.html
+torch-sparse==0.6.16
 tornado==6.4.2
 tqdm==4.67.1
 transformers==4.51.1
