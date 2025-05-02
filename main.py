@@ -6,7 +6,7 @@ import tempfile
 import pandas as pd
 import numpy as np
 from huggingface_hub import login
-import torch 
+import torch
 # For Gemini API – make sure to install with: pip install --force-reinstall pymupdf google-generativeai
 import google.generativeai as genai
 
@@ -66,7 +66,7 @@ def structure_text_with_gemini(text):
     """
     # Create a GenerativeModel using Gemini (example model name "gemini-2.0-flash")
     model = genai.GenerativeModel("gemini-2.0-flash")
-    
+
     prompt = (
         "Extract structured tabular data from the following medical report and format it as CSV with proper headers. "
         "Add a column indicating whether the value is 'Low', 'Low Tendency', 'Normal', 'High Tendency', or 'High'.\n"
@@ -135,7 +135,7 @@ def map_data_for_model1(csv_file):
     }
     try:
         df = pd.read_csv(csv_file)
-        model1_input = { key: df[key].iloc[0] if key in df.columns and not pd.isna(df[key].iloc[0]) else default 
+        model1_input = { key: df[key].iloc[0] if key in df.columns and not pd.isna(df[key].iloc[0]) else default
                          for key, default in defaults.items() }
     except Exception as e:
         st.error("Error reading CSV: " + str(e))
@@ -222,10 +222,10 @@ if uploaded_file is not None and not st.session_state["report_ready"]:
     # Process PDF without showing intermediate details
     csv_output_path = "output.csv"
     pdf_to_csv(pdf_path, csv_output_path)
-    
+
     # Map CSV data to model1 input parameters
     model1_input = map_data_for_model1(csv_output_path)
-    
+
     # Run Model 1 (simulate if model not available)
     if model1 is not None:
         model1_features = np.array([v for k, v in model1_input.items()], dtype=float).reshape(1, -1)
@@ -233,20 +233,20 @@ if uploaded_file is not None and not st.session_state["report_ready"]:
         disease_class = "diabetic" if pred_prob > 0.7 else ("anemia" if pred_prob >= 0.5 else "healthy")
     else:
         disease_class = "healthy (default simulated)"
-    
+
     # Map data for Model 2 (CKD prediction) using model1 result
     model2_input = map_data_for_model2(disease_class)
-    
+
     if model2 is not None:
         model2_features = np.array([v for k, v in model2_input.items()], dtype=float).reshape(1, -1)
         ckd_prob = model2.predict(model2_features)[0][0]
         ckd_prediction = "CKD prone" if ckd_prob >= 0.5 else "Not CKD prone"
     else:
         ckd_prediction = "Not CKD prone (default simulated)"
-    
+
     # Generate initial assessment report using the LLM
     initial_report = generate_assessment(model1_input, disease_class, ckd_prediction, st.session_state["llm_pipeline"])
-    
+
     # Save the initial report in the chat history
     st.session_state["chat_history"].append(("bot", initial_report))
     st.session_state["report_ready"] = True
@@ -264,10 +264,10 @@ chat_input = st.text_input("Enter your message here...", key="user_input")
 if st.button("Send", key="send_button") and chat_input:
     # Append the user input to chat history
     st.session_state["chat_history"].append(("user", chat_input))
-    
+
     # Create conversation context (you may refine this prompt as needed)
     conversation_context = "\n".join(f"{sender}: {msg}" for sender, msg in st.session_state["chat_history"])
-    
+
     # Generate bot reply using the LLM pipeline
     llm_reply = st.session_state["llm_pipeline"](conversation_context)[0]['generated_text']
     st.session_state["chat_history"].append(("bot", llm_reply))
