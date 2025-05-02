@@ -41,6 +41,3 @@ google-api-core==2.24.2
 pygments==2.19.1
 markdown-it-py==3.0.0
 mdurl==0.1.2
-
-
-tensorflow keras scikit-learn h5py
